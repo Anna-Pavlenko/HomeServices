@@ -120,6 +120,16 @@
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required="">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="phone" class="col-md-4 col-form-label text-md-right">Register As</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="registeras" id="registeras">
+                                            <option value="CST">Customer</option>
+                                            <option value="SVP">Service Provider</option>
+                                        </select>
+                                    </div>
+                                </div>
+                     
                                 <div class="form-group row mb-0">
                                     <div class="col-md-10">
                                         <span style="font-size: 14px;">If you have already registered <a
