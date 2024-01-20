@@ -35,10 +35,14 @@
             All Service Categories
         </div>
         <div class="col-md-6">
-            <a href="{{ route('admin.add_service_category') }}" class="btn btn-info pull-right">Add New</a>
+            <a href="{{ route('admin.add_service_category') }}" class="btn btn-info pull-right">All Categories</a>
         </div>
     </div>
 <div class="panel-body">
+    @if (Session::has('message'))
+   <div class="alert alert-success" role="alert alert-success" role="alert">{{ Session::get('message') }} </div>
+        
+    @endif
     <table class="table table-striped">
         <thead>
             <tr>
@@ -56,7 +60,11 @@
                     <td><img src="{{ asset('images/categories') }}/{{ $scategory->image }}" width="60"></td>
                     <td>{{ $scategory->name }}</td>
                     <td>{{ $scategory->slug }}</td>
-                    <td><a href="{{ route('admin.edit_service_category', ['category_id'=>$scategory->id]) }}"><i class="fa fa-edit fa-2x text-info"></i></a></td>
+                    <td>
+                    <a href="{{ route('admin.edit_service_category', ['category_id'=>$scategory->id]) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                    <a href="#" onclick="confirm('Are you sure? you want to delete this service category!') || event.stopInmediatPropagation()" wire:click.prevent="deleteServiceCategory({{ $scategory->id }})" style="margin-left: 10px;"><i class="fa fa-times fa-2x text-danger"></i></a>
+                </td>
+                </tr>
                 </tr>
             @endforeach
         </tbody>
